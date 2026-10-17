@@ -11,69 +11,81 @@
 <body>
   <div id="toolbar">
     <div class="group">
-      <span class="group-title">创建图形</span>
+      <span class="group-title" data-i18n="创建图形">创建图形</span>
       <div class="group-body">
-        <button class="tool active" data-tool="stroke">笔画</button>
-        <button class="tool" data-tool="line" title="拖动画直线（按住 Shift 吸附 45°）">直线</button>
-        <button class="tool" data-tool="rect">方块</button>
-        <button class="tool" data-tool="circle">圆形</button>
-        <button class="tool" data-tool="text">文字</button>
+        <button class="tool active" data-tool="stroke" data-i18n="笔画">笔画</button>
+        <button class="tool" data-tool="line" data-i18n="直线"
+          data-i18n-title="拖动画直线（按住 Shift 吸附 45°）">直线</button>
+        <button class="tool" data-tool="rect" data-i18n="方块">方块</button>
+        <button class="tool" data-tool="circle" data-i18n="圆形">圆形</button>
+        <button class="tool" data-tool="text" data-i18n="文字">文字</button>
       </div>
     </div>
     <div class="divider"></div>
-    <button class="tool" data-tool="select">选择 / 移动</button>
+    <button class="tool" data-tool="select" data-i18n="选择 / 移动">选择 / 移动</button>
     <div class="divider"></div>
-    <button class="tool" data-tool="frame" title="构图框（导出区域）：拖动移动，拖四角缩放">构图框</button>
-    <label class="field">宽 <input type="number" id="frameW" min="16" max="8000" step="1" value="640"></label>
-    <label class="field">高 <input type="number" id="frameH" min="16" max="8000" step="1" value="360"></label>
-    <button class="tool" id="centerFrameBtn" title="把构图框居中到画布">居中</button>
-    <button class="tool" id="videoBtn" title="按构图框录制导出视频（播放一遍后自动下载）">导出视频</button>
+    <button class="tool" data-tool="frame" data-i18n="构图框"
+      data-i18n-title="构图框（导出区域）：拖动移动，拖四角缩放">构图框</button>
+    <label class="field"><span data-i18n="宽">宽</span> <input type="number" id="frameW" min="16" max="8000" step="1"
+        value="640"></label>
+    <label class="field"><span data-i18n="高">高</span> <input type="number" id="frameH" min="16" max="8000" step="1"
+        value="360"></label>
+    <button class="tool" id="centerFrameBtn" data-i18n="居中" data-i18n-title="把构图框居中到画布">居中</button>
+    <button class="tool" id="videoBtn" data-i18n-title="按构图框录制导出视频（播放一遍后自动下载）">导出视频</button>
     <div class="divider"></div>
-    <label class="field">颜色 <input type="color" id="color" value="#2f6fed"></label>
-    <label class="field">粗细 <input type="range" id="size" min="1" max="40" value="4"></label>
-    <button class="tool" id="fillBtn" title="实心填充（新图形生效；有选中图形时切换它的填充）">实心</button>
-    <button class="tool active" id="snapBtn" title="开启/关闭移动吸附">吸附</button>
-    <span class="field">洋葱皮
-      <button class="tool" id="onionBtn" title="开启/关闭洋葱皮（显示前后帧的幽灵轮廓）">关</button>
-      <input type="number" id="onionPrevIn" min="0" max="8" step="1" value="2" style="width:40px" title="当前帧之前显示的幽灵帧数">
-      <input type="number" id="onionNextIn" min="0" max="8" step="1" value="2" style="width:40px" title="当前帧之后显示的幽灵帧数">
+    <label class="field"><span data-i18n="颜色">颜色</span> <input type="color" id="color" value="#2f6fed"></label>
+    <label class="field"><span data-i18n="粗细">粗细</span> <input type="range" id="size" min="1" max="40" value="4"></label>
+    <button class="tool" id="fillBtn" data-i18n="实心"
+      data-i18n-title="实心填充（新图形生效；有选中图形时切换它的填充）">实心</button>
+    <button class="tool active" id="snapBtn" data-i18n="吸附" data-i18n-title="开启/关闭移动吸附">吸附</button>
+    <span class="field"><span data-i18n="洋葱皮">洋葱皮</span>
+      <button class="tool" id="onionBtn" data-i18n-title="开启/关闭洋葱皮（显示前后帧的幽灵轮廓）">关</button>
+      <input type="number" id="onionPrevIn" min="0" max="8" step="1" value="2" style="width:40px"
+        data-i18n-title="当前帧之前显示的幽灵帧数">
+      <input type="number" id="onionNextIn" min="0" max="8" step="1" value="2" style="width:40px"
+        data-i18n-title="当前帧之后显示的幽灵帧数">
       <input type="number" id="onionStepIn" min="0.05" max="2" step="0.05" value="0.2" style="width:56px"
-        title="相邻幽灵帧的时间间隔（秒）">
+        data-i18n-title="相邻幽灵帧的时间间隔（秒）">
     </span>
-    <label class="field">背景 <input type="color" id="bgcolor" value="#ffffff"></label>
-    <button class="tool" id="clear">清空</button>
+    <label class="field"><span data-i18n="背景">背景</span> <input type="color" id="bgcolor" value="#ffffff"></label>
+    <button class="tool" id="clear" data-i18n="清空">清空</button>
     <button class="tool" id="fsBtn">⛶ 全屏</button>
     <div class="divider"></div>
-    <button class="tool" id="saveBtn" title="首次点按选择保存位置（等同另存为），之后点按直接覆盖更新同一文件">保存</button>
-    <button class="tool" id="saveAsBtn" title="另存为：重新选择保存位置">另存为</button>
-    <button class="tool" id="openBtn" title="打开之前保存的 JSON 文件">打开</button>
+    <button class="tool" id="saveBtn" data-i18n="保存"
+      data-i18n-title="首次点按选择保存位置（等同另存为），之后点按直接覆盖更新同一文件">保存</button>
+    <button class="tool" id="saveAsBtn" data-i18n="另存为" data-i18n-title="另存为：重新选择保存位置">另存为</button>
+    <button class="tool" id="openBtn" data-i18n="打开" data-i18n-title="打开之前保存的 JSON 文件">打开</button>
+    <div class="divider"></div>
+    <button class="tool" id="langBtn" title="切换界面语言 / Switch language">EN</button>
   </div>
   <input type="file" id="openFile" accept=".json,application/json" style="display:none">
   <div id="stage"><canvas id="cv"></canvas><input id="textInput" class="text-input" spellcheck="false">
-    <div id="pathBar"><span class="pb-hint" id="pbHint"></span><button class="tool" id="pbPoly">折线</button><button
-        class="tool" id="pbCircle">圆形</button><button class="tool" id="pbSmooth">曲线</button><button class="tool"
-        id="pbDone">完成</button><button class="tool" id="pbCancel">取消</button></div>
+    <div id="pathBar"><span class="pb-hint" id="pbHint"></span><button class="tool" id="pbPoly"
+        data-i18n="折线">折线</button><button class="tool" id="pbCircle" data-i18n="圆形">圆形</button><button class="tool"
+        id="pbSmooth" data-i18n="曲线">曲线</button><button class="tool" id="pbDone" data-i18n="完成">完成</button><button
+        class="tool" id="pbCancel" data-i18n="取消">取消</button></div>
   </div>
-  <div class="gutter gutter-h" id="gutterH" title="拖动调整画布与时间线的高度"></div>
+  <div class="gutter gutter-h" id="gutterH" data-i18n-title="拖动调整画布与时间线的高度"></div>
   <div id="timeline">
     <div class="tl-controls">
-      <span class="panel-grip" id="tlGrip" title="按住拖动，可停靠到顶部或底部">⠿</span>
+      <span class="panel-grip" id="tlGrip" data-i18n-title="按住拖动，可停靠到顶部或底部">⠿</span>
       <button class="tool" id="playBtn">▶ 播放</button>
-      <button class="tool" id="keyBtn">打关键帧</button>
-      <span class="kf-pick" id="kfPick" title="选择「打关键帧」要写入的通道（可多选）">
-        <button class="kf-chip active" data-kf="move">位移</button>
-        <button class="kf-chip active" data-kf="scale">缩放</button>
-        <button class="kf-chip active" data-kf="rot">旋转</button>
+      <button class="tool" id="keyBtn" data-i18n="打关键帧">打关键帧</button>
+      <span class="kf-pick" id="kfPick" data-i18n-title="选择「打关键帧」要写入的通道（可多选）">
+        <button class="kf-chip active" data-kf="move" data-i18n="位移">位移</button>
+        <button class="kf-chip active" data-kf="scale" data-i18n="缩放">缩放</button>
+        <button class="kf-chip active" data-kf="rot" data-i18n="旋转">旋转</button>
       </span>
-      <button class="tool" id="delKeyBtn">删除关键帧</button>
-      <span class="vis-pick" id="visPick" title="放置「显隐」关键帧：出现/消失=瞬间突变，淡入/淡出=渐变">
-        <button class="tool vis-instant" id="showBtn" title="此刻瞬间出现（阶跃）">出现</button>
-        <button class="tool vis-instant" id="hideBtn" title="此刻瞬间消失（阶跃）">消失</button>
-        <button class="tool vis-fade" id="fadeInBtn" title="从上一帧渐变到不透明">淡入</button>
-        <button class="tool vis-fade" id="fadeOutBtn" title="从上一帧渐变到透明">淡出</button>
+      <button class="tool" id="delKeyBtn" data-i18n="删除关键帧">删除关键帧</button>
+      <span class="vis-pick" id="visPick" data-i18n-title="放置「显隐」关键帧：出现/消失=瞬间突变，淡入/淡出=渐变">
+        <button class="tool vis-instant" id="showBtn" data-i18n="出现" data-i18n-title="此刻瞬间出现（阶跃）">出现</button>
+        <button class="tool vis-instant" id="hideBtn" data-i18n="消失" data-i18n-title="此刻瞬间消失（阶跃）">消失</button>
+        <button class="tool vis-fade" id="fadeInBtn" data-i18n="淡入" data-i18n-title="从上一帧渐变到不透明">淡入</button>
+        <button class="tool vis-fade" id="fadeOutBtn" data-i18n="淡出" data-i18n-title="从上一帧渐变到透明">淡出</button>
       </span>
       <span class="tl-time" id="timeLabel">0.00s / 5.00s</span>
-      <label class="field">时长 <input type="number" id="durInput" min="1" max="60" step="1" value="5"> 秒</label>
+      <label class="field"><span data-i18n="时长">时长</span> <input type="number" id="durInput" min="1" max="60" step="1"
+          value="5"> <span data-i18n="秒">秒</span></label>
     </div>
     <div class="tl-body">
       <div class="tl-names" id="tlNames">
@@ -82,7 +94,7 @@
           <div class="tl-names-inner" id="tlNamesInner"></div>
         </div>
       </div>
-      <div class="gutter gutter-v" id="gutterNames" title="拖动调整轨道列表宽度"></div>
+      <div class="gutter gutter-v" id="gutterNames" data-i18n-title="拖动调整轨道列表宽度"></div>
       <div class="tl-tracks" id="tlTracks">
         <div class="tl-ruler" id="tlRuler"></div>
         <div class="tl-rows-clip" id="tlRowsClip">
@@ -90,25 +102,28 @@
         </div>
         <div class="tl-playhead" id="tlPlayhead"></div>
       </div>
-      <div class="gutter gutter-v" id="gutterCurve" title="拖动调整曲线面板宽度"></div>
+      <div class="gutter gutter-v" id="gutterCurve" data-i18n-title="拖动调整曲线面板宽度"></div>
       <div class="tl-curve">
         <div class="curve-controls">
           <span class="curve-title">
-            <span class="panel-grip" id="curveGrip" title="按住拖动，可停靠到左侧或右侧">⠿</span>
-            速度曲线
+            <span class="panel-grip" id="curveGrip" data-i18n-title="按住拖动，可停靠到左侧或右侧">⠿</span>
+            <span data-i18n="速度曲线">速度曲线</span>
           </span>
           <span class="curve-vals" id="curveVals">先选中图形</span>
           <span class="curve-nums" id="curveNums"></span>
           <div class="curve-presets" id="curvePresets"></div>
-          <button class="tool" id="curveResetBtn" title="恢复曲线视野（也可双击曲线面板）">复位</button>
+          <button class="tool" id="curveResetBtn" data-i18n="复位"
+            data-i18n-title="恢复曲线视野（也可双击曲线面板）">复位</button>
         </div>
-        <div class="curve-box"><canvas id="curveCv" title="滚轮 缩放视角 · 拖空白处平移 · 拖曲线或圆点调曲线 · 双击复位"></canvas></div>
+        <div class="curve-box"><canvas id="curveCv"
+            data-i18n-title="滚轮 缩放视角 · 拖空白处平移 · 拖曲线或圆点调曲线 · 双击复位"></canvas></div>
       </div>
     </div>
   </div>
   <div id="dockHint"></div>
   <div id="ctxMenu"></div>
 
+  <script src="js/00-i18n.js"></script>
   <script src="js/01-state.js"></script>
   <script src="js/02-core.js"></script>
   <script src="js/03-ui.js"></script>

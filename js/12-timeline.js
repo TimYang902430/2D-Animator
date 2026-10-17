@@ -215,11 +215,11 @@
               const nameEl = document.createElement('div');
               nameEl.className = 'tl-name tl-group' + (groupActive ? ' active' : '');
               nameEl.style.height = height;
-              nameEl.title = s.name + '（点击选择图形）';
+              nameEl.title = shapeLabel(s) + tr('（点击选择图形）');
               const caret = document.createElement('span');
               caret.className = 'tl-caret';
               caret.textContent = s.expanded ? '▾' : '▸';
-              caret.title = s.expanded ? '收起通道' : '展开通道';
+              caret.title = s.expanded ? tr('收起通道') : tr('展开通道');
               caret.addEventListener('click', (ev) => {
                 ev.stopPropagation();
                 s.expanded = !s.expanded;
@@ -227,7 +227,7 @@
               });
               const label = document.createElement('span');
               label.className = 'tl-group-label';
-              label.textContent = s.name;
+              label.textContent = shapeLabel(s);
               nameEl.appendChild(caret);
               nameEl.appendChild(label);
               nameEl.addEventListener('click', () => {
@@ -256,8 +256,8 @@
             const cName = document.createElement('div');
             cName.className = 'tl-name tl-ch' + (chActive ? ' active' : '');
             cName.style.height = height;
-            cName.textContent = CH_LABEL[ch];
-            cName.title = CH_LABEL[ch];
+            cName.textContent = tr(CH_LABEL[ch]);
+            cName.title = tr(CH_LABEL[ch]);
             cName.addEventListener('click', () => {
               selected = s;
               activeCh = ch;
@@ -284,7 +284,7 @@
                 segEl.className = 'tl-seg';
                 segEl.style.left = this.pct(activeKey.t) + '%';
                 segEl.style.width = (this.pct(next.t) - this.pct(activeKey.t)) + '%';
-                segEl.title = '这段受速度曲线控制';
+                segEl.title = tr('这段受速度曲线控制');
                 row.appendChild(segEl);
               }
             }
@@ -295,7 +295,7 @@
                 + (keySel.has(k) ? ' multi' : '')
                 + (kfDrag && kfDrag.set && kfDrag.set.has(k) ? ' dragging' : '');
               kf.style.left = this.pct(k.t) + '%';
-              kf.title = CH_LABEL[ch] + ' @ ' + k.t.toFixed(2) + 's = ' + (Math.round(k.v * 1000) / 1000) + '（Shift 多选 · 按住拖动改时间）';
+              kf.title = tr('{ch} @ {t}s = {v}（Shift 多选 · 按住拖动改时间）', { ch: tr(CH_LABEL[ch]), t: k.t.toFixed(2), v: Math.round(k.v * 1000) / 1000 });
               kf.addEventListener('pointerdown', (ev) => {
                 ev.stopPropagation();
                 if (ev.button !== 0) return;

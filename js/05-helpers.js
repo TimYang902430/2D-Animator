@@ -48,9 +48,9 @@
 
       function exportVideo() {
         if (recording) return;
-        if (typeof canvas.captureStream !== 'function') { alert('当前浏览器不支持画布录制'); return; }
+        if (typeof canvas.captureStream !== 'function') { alert(tr('当前浏览器不支持画布录制')); return; }
         const mime = pickVideoMime();
-        if (!mime) { alert('当前浏览器不支持视频录制'); return; }
+        if (!mime) { alert(tr('当前浏览器不支持视频录制')); return; }
 
         player.pause();
         const s = dpr;
@@ -73,7 +73,7 @@
           videoTap = null;
           suppressOverlay = false;
           render();
-          alert('视频录制启动失败：' + err.message);
+          alert(tr('视频录制启动失败：') + err.message);
           return;
         }
 
@@ -83,7 +83,7 @@
           suppressOverlay = false;
           recording = false;
           videoBtn.disabled = false;
-          videoBtn.textContent = '导出视频';
+          videoBtn.textContent = tr('导出视频');
           render();
           const ext = mime.indexOf('mp4') >= 0 ? 'mp4' : 'webm';
           downloadBlob(new Blob(chunks, { type: mime.split(';')[0] }), 'drawing-' + ow + 'x' + oh + '.' + ext);
@@ -91,7 +91,7 @@
 
         recording = true;
         videoBtn.disabled = true;
-        videoBtn.textContent = '录制中…';
+        videoBtn.textContent = tr('录制中…');
         rec.start();
         render();
 

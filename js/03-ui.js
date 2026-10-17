@@ -27,7 +27,7 @@
       let fsPending = false;
 
       function updateFsBtn() {
-        fsBtn.textContent = document.fullscreenElement ? '⛶ 退出全屏' : '⛶ 全屏';
+        fsBtn.textContent = document.fullscreenElement ? tr('⛶ 退出全屏') : tr('⛶ 全屏');
       }
 
       function enterFullscreen() {
@@ -172,11 +172,11 @@
         if (!dockDrag) return;
         if (dockDrag.kind === 'timeline') {
           const sr = stageEl.getBoundingClientRect();
-          const tr = timelineEl.getBoundingClientRect();
+          const tlr = timelineEl.getBoundingClientRect();
           const tb = toolbarEl.getBoundingClientRect();
           dockDrag.target = e.clientY < sr.top + sr.height / 2 ? 'top' : 'bottom';
-          if (dockDrag.target === 'top') showDockHint(tb.left, tb.bottom, window.innerWidth, tr.height);
-          else showDockHint(0, window.innerHeight - tr.height, window.innerWidth, tr.height);
+          if (dockDrag.target === 'top') showDockHint(tb.left, tb.bottom, window.innerWidth, tlr.height);
+          else showDockHint(0, window.innerHeight - tlr.height, window.innerWidth, tlr.height);
         } else {
           const br = document.querySelector('.tl-body').getBoundingClientRect();
           const cr = curvePanel.getBoundingClientRect();
@@ -265,7 +265,7 @@
       }
       onionBtn.addEventListener('click', () => {
         onionOn = !onionOn;
-        onionBtn.textContent = onionOn ? '开' : '关';
+        onionBtn.textContent = onionOn ? tr('开') : tr('关');
         onionBtn.classList.toggle('active', onionOn);
         render();
       });

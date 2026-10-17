@@ -7,7 +7,8 @@
 
       const presetButtons = PRESETS.map(p => {
         const btn = document.createElement('button');
-        btn.textContent = p.name;
+        btn.dataset.i18n = p.name;
+        btn.textContent = tr(p.name);
         btn._v = p.v;
         btn.addEventListener('click', () => {
           const es = curveEditor.curveEases();
@@ -275,4 +276,4 @@
       setTool('stroke');
       timeline.buildTimeline();
       player.setTime(0);
-      updateFsBtn();
+      refreshLang();

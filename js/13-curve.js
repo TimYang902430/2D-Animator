@@ -205,40 +205,40 @@
           curveCtx.setLineDash([]);
 
           if (!selected) {
-            curveVals.textContent = '先选中图形';
+            curveVals.textContent = tr('先选中图形');
             curveNums.textContent = '';
             return;
           }
           if (!keysNow || !keysNow.length) {
-            curveVals.textContent = '无通道';
+            curveVals.textContent = tr('无通道');
             curveNums.textContent = '';
             return;
           }
           if (keysNow.length < 2) {
-            curveVals.textContent = CH_LABEL[activeCh] + '：只有 1 个关键帧';
-            curveNums.textContent = '拖播放头到别处再打 1 帧';
+            curveVals.textContent = tr('{ch}：只有 1 个关键帧', { ch: tr(CH_LABEL[activeCh]) });
+            curveNums.textContent = tr('拖播放头到别处再打 1 帧');
             return;
           }
           if (!e) {
-            curveVals.textContent = CH_LABEL[activeCh] + '：无区段';
+            curveVals.textContent = tr('{ch}：无区段', { ch: tr(CH_LABEL[activeCh]) });
             curveNums.textContent = '';
             return;
           }
 
           if (seg) {
-            curveVals.textContent = CH_LABEL[activeCh] + ' 第 ' + (seg.i + 1) + '→' + (seg.i + 2) + ' 段 · ' + segSpan.toFixed(2) + 's';
+            curveVals.textContent = tr('{ch} 第 {a}→{b} 段 · {span}s', { ch: tr(CH_LABEL[activeCh]), a: seg.i + 1, b: seg.i + 2, span: segSpan.toFixed(2) });
             if (e.step) {
-              curveNums.textContent = '阶跃（瞬变）：保持到段末后跳到 ' + seg.b.v;
+              curveNums.textContent = tr('阶跃（瞬变）：保持到段末后跳到 {v}', { v: seg.b.v });
             } else {
               const moved = Math.abs(seg.a.v - seg.b.v) > 1e-6;
               curveNums.textContent = moved
                 ? seg.a.v.toFixed(3) + ' → ' + seg.b.v.toFixed(3) + '   ' +
                 [e.x1, e.y1, e.x2, e.y2].map(n => n.toFixed(2)).join(', ')
-                : '这两帧数值相同，曲线看不出效果';
+                : tr('这两帧数值相同，曲线看不出效果');
             }
           } else {
-            curveVals.textContent = CH_LABEL[activeCh] + '：末尾关键帧';
-            curveNums.textContent = '后面没有区段，曲线不生效';
+            curveVals.textContent = tr('{ch}：末尾关键帧', { ch: tr(CH_LABEL[activeCh]) });
+            curveNums.textContent = tr('后面没有区段，曲线不生效');
           }
 
           if (e.step) {

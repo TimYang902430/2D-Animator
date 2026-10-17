@@ -59,17 +59,17 @@
       function showCtxMenu(x, y, shape) {
         ctxMenuEl.innerHTML = '';
         if (!shape) {
-          addCtxItem('复位视图（100%）', viewCtrl.reset);
+          addCtxItem(tr('复位视图（100%）'), viewCtrl.reset);
         } else if (!hasPath(shape)) {
-          addCtxItem('按轨迹移动 · 折线', () => startPathDraw(shape, 'poly'));
-          addCtxItem('按轨迹移动 · 圆形', () => startPathDraw(shape, 'circle'));
+          addCtxItem(tr('按轨迹移动 · 折线'), () => startPathDraw(shape, 'poly'));
+          addCtxItem(tr('按轨迹移动 · 圆形'), () => startPathDraw(shape, 'circle'));
           if (shape.path) {
             addCtxSep();
-            addCtxItem('删除轨迹', () => removePath(shape), true);
+            addCtxItem(tr('删除轨迹'), () => removePath(shape), true);
           }
         } else {
           if (shape.path.type === 'poly') {
-            addCtxItem(shape.path.smooth ? '轨迹改为折线' : '轨迹改为曲线', () => {
+            addCtxItem(shape.path.smooth ? tr('轨迹改为折线') : tr('轨迹改为曲线'), () => {
               history.record();
               shape.path.smooth = !shape.path.smooth;
               shape.path._tab = null;
@@ -78,9 +78,9 @@
               render();
             });
           }
-          addCtxItem('重绘轨迹', () => startPathDraw(shape, shape.path.type === 'circle' ? 'circle' : 'poly'));
+          addCtxItem(tr('重绘轨迹'), () => startPathDraw(shape, shape.path.type === 'circle' ? 'circle' : 'poly'));
           addCtxSep();
-          addCtxItem('删除轨迹', () => removePath(shape), true);
+          addCtxItem(tr('删除轨迹'), () => removePath(shape), true);
         }
         ctxMenuEl.style.display = 'block';
         const r = ctxMenuEl.getBoundingClientRect();
@@ -95,8 +95,8 @@
         pbSmooth.classList.toggle('active', !!pathDraw.smooth);
         pbSmooth.style.visibility = pathDraw.mode === 'poly' ? 'visible' : 'hidden';
         pbHint.textContent = pathDraw.mode === 'poly'
-          ? '绘制轨迹：点击添加锚点'
-          : '绘制轨迹：从圆心拖出半径';
+          ? tr('绘制轨迹：点击添加锚点')
+          : tr('绘制轨迹：从圆心拖出半径');
       }
 
       function showPathBar() { pathBarEl.style.display = 'flex'; updatePathBar(); }

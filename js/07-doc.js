@@ -119,7 +119,7 @@
         }
 
         loadDoc(obj) {
-          if (!obj || !Array.isArray(obj.shapes)) throw new Error('不是有效的作品文件');
+          if (!obj || !Array.isArray(obj.shapes)) throw new Error(tr('不是有效的作品文件'));
           player.pause();
           hideTextEditor();
           if (pathDraw) { pathDraw = null; hidePathBar(); }

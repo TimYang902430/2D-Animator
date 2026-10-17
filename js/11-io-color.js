@@ -25,7 +25,7 @@
           history.clear();
           saveFileHandle = handle || null; // 记录文件句柄，"保存"直接覆盖写回打开/另存为的文件
         } catch (err) {
-          alert('打开失败：' + err.message);
+          alert(tr('打开失败：') + err.message);
         }
       };
       openBtn.addEventListener('click', async () => {
@@ -49,7 +49,7 @@
         if (!f) return;
         const fr = new FileReader();
         fr.onload = () => applyOpenJson(String(fr.result), null);
-        fr.onerror = () => alert('读取文件失败');
+        fr.onerror = () => alert(tr('读取文件失败'));
         fr.readAsText(f);
       });
 

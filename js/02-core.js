@@ -62,7 +62,7 @@
           if (currentTime >= duration - 1e-6) this.setTime(0);
           playing = true;
           lastFrame = 0;
-          playBtn.textContent = '⏸ 暂停';
+          playBtn.textContent = tr('⏸ 暂停');
           rafId = requestAnimationFrame(this.tick.bind(this));
         }
 
@@ -70,7 +70,7 @@
           if (!playing) return;
           playing = false;
           cancelAnimationFrame(rafId);
-          playBtn.textContent = '▶ 播放';
+          playBtn.textContent = tr('▶ 播放');
         }
 
         togglePlay() {
